@@ -20,11 +20,17 @@ This tool validates a pipeline definition against a set of vars files and will o
 
 ## Usage
 
+To install:
+
+`go install github.com/rcw5/pipeline-validator`
+
+To run
+
 ```NAME:
-   vars-validator - Validate a Concourse pipeline and its vars
+   pipeline-validator - Validate a Concourse pipeline and its vars
 
 USAGE:
-   vars-validator [global options] command [command options] [arguments...]
+   pipeline-validator [global options] command [command options] [arguments...]
 
 VERSION:
    0.0.1
@@ -38,3 +44,8 @@ GLOBAL OPTIONS:
    --help, -h                        show help
    --version, -v                     print the version
 ```
+
+Example:
+
+`pipeline-validator --pipeline pipeline.yml --load-vars-from vars1.yml --load-vars-from vars2.yml`
+
