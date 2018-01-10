@@ -40,6 +40,7 @@ func main() {
 		if err != nil {
 			return cli.NewExitError(err, 1)
 		}
+		fmt.Println("Looks good!")
 		return nil
 	}
 
