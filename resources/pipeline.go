@@ -3,6 +3,7 @@ package resources
 import (
 	"fmt"
 	"regexp"
+	"sort"
 	"strings"
 
 	"github.com/rcw5/pipeline-validator/utils"
@@ -34,10 +35,12 @@ func (p Pipeline) Validate(vars ...Vars) utils.ValidationError {
 	}
 	undefinedVars, extraVars, _ := utils.CompareArrays(varsInPipeline, allVars)
 	err := utils.ValidationError{}
-	if undefinedVars != nil {
+	if len(undefinedVars) > 0 {
+		sort.Strings(undefinedVars)
 		err.MissingVarsError = fmt.Errorf("The following vars were present in the pipeline but not in the vars file: %s", strings.Join(undefinedVars, ", "))
 	}
-	if extraVars != nil {
+	if len(extraVars) > 0 {
+		sort.Strings(extraVars)
 		err.ExtraVarsError = fmt.Errorf("The following vars were present in the vars file but not the pipeline: %s", strings.Join(extraVars, ", "))
 	}
 	return err
