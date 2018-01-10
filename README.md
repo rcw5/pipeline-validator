@@ -20,9 +20,9 @@ This tool validates a pipeline definition against a set of vars files and will o
 
 ## Usage
 
-To install:
+To download:
 
-`go install github.com/rcw5/pipeline-validator`
+`go get -u github.com/rcw5/pipeline-validator`
 
 To run
 
