@@ -8,11 +8,13 @@ import (
 	"github.com/urfave/cli"
 )
 
+var version string = "dev"
+
 func main() {
 	app := cli.NewApp()
 	app.Name = "pipeline-validator"
 	app.Usage = "Validate a Concourse pipeline and its vars"
-	app.Version = "0.0.1"
+	app.Version = version
 
 	app.Flags = []cli.Flag{
 		cli.StringFlag{

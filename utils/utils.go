@@ -33,15 +33,15 @@ func CompareArrays(arr1, arr2 []string) ([]string, []string, []string) {
 	var inLeft, inRight, inBoth []string
 	for _, v := range arr1 {
 		if Contains(arr2, v) {
-			inBoth = append(inBoth, v)
+			inBoth = appendIfNotPresent(inBoth, v)
 		} else {
-			inLeft = append(inLeft, v)
+			inLeft = appendIfNotPresent(inLeft, v)
 		}
 	}
 
 	for _, v := range arr2 {
 		if !Contains(arr1, v) {
-			inRight = append(inRight, v)
+			inRight = appendIfNotPresent(inRight, v)
 		}
 	}
 	return inLeft, inRight, inBoth
@@ -54,4 +54,11 @@ func Contains(arr []string, value string) bool {
 		}
 	}
 	return false
+}
+
+func appendIfNotPresent(arr []string, val string) []string {
+	if !Contains(arr, val) {
+		return append(arr, val)
+	}
+	return arr
 }

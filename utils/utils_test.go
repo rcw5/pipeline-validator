@@ -35,6 +35,14 @@ var _ = Describe("Utils", func() {
 			_, inRight, _ := utils.CompareArrays(arr1, arr2)
 			Expect(inRight).To(ConsistOf("val3"))
 		})
+		It("Returns unique arrays", func() {
+			arr1 = append(arr1, arr1...)
+			arr2 = append(arr2, arr2...)
+			inLeft, inRight, inBoth := utils.CompareArrays(arr1, arr2)
+			Expect(inLeft).To(ConsistOf("val1"))
+			Expect(inRight).To(ConsistOf("val3"))
+			Expect(inBoth).To(ConsistOf("val2"))
+		})
 
 	})
 })
